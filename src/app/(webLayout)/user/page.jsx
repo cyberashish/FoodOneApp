@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const user = () => {
  const {data:session} = useSession();
- const searchparams = useSearchParams();
+//  const searchparams = useSearchParams();
  const [bookingInfo,setBookingInfo] = useState();
 
  const handleUserInfo = async () => {
@@ -24,9 +24,9 @@ const user = () => {
  }
 
  useEffect(()=>{
-  if(searchparams.get("booked")){
-    toast.success("Your table  booked successfully");
-  }
+  // if(searchparams.get("booked")){
+  //   toast.success("Your table  booked successfully");
+  // }
   handleUserInfo();
 
  },[])
