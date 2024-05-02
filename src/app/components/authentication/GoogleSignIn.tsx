@@ -6,7 +6,7 @@ import { signIn } from 'next-auth/react'
 
 const GoogleSignIn = () => {
     const signInHandler = () => {
-        signIn('google',{callbackUrl:'/user/'})
+        signIn('google',{callbackUrl:'/user'})
         }
   return (
     <div className="flex justify-center cursor-pointer" >
