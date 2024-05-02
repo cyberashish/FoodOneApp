@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500;600;700&family=Pacifico&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+@layer components{
+  .container{
+    @apply 2xl:max-w-[1370px]  xl:max-w-7xl lg:max-w-[1024px] md:max-w-[768px] sm:max-w-[640px] max-w-full;
+  }
+  .btn{
+    @apply md:py-4 md:px-9 py-3 px-7 bg-primary rounded-lg font-display md:text-base text-sm font-semibold text-white hover:bg-primaryEmphasis cursor-pointer;
+  }
+}
+
+
+/* Layout css */
+
