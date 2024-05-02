@@ -1,15 +1,17 @@
 "use client"
 import axios from "axios";
 import { useSession } from "next-auth/react"
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const user = () => {
- const {data:session} = useSession();
-//  const searchparams = useSearchParams();
  const [bookingInfo,setBookingInfo] = useState();
+ const router = useRouter();
+
+
+ const { data: session, status } = useSession();
 
  const handleUserInfo = async () => {
    try{
@@ -24,13 +26,26 @@ const user = () => {
  }
 
  useEffect(()=>{
-  // if(searchparams.get("booked")){
-  //   toast.success("Your table  booked successfully");
-  // }
+
   handleUserInfo();
 
  },[])
  console.log(session);
+ if (status === 'loading') {
+  return <div class="min-h-60 flex flex-col bg-white border shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700 dark:shadow-neutral-700/70">
+  <div class="flex flex-auto flex-col justify-center items-center p-4 md:p-5">
+    <div class="flex justify-center">
+      <div class="animate-spin inline-block size-6 border-[3px] border-current border-t-transparent text-blue-600 rounded-full dark:text-blue-500" role="status" aria-label="loading">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </div>
+</div>;
+  }
+  if (!session) {
+    return router.push("/");
+  }
+
   return (
     <>
      <div className="w-full h-96 flex relative" >
